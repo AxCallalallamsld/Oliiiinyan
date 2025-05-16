@@ -1,0 +1,228 @@
+}<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felicidades! descubriste el primer acertijo</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        /* Estilo general */
+        body {
+            background-color: #F1E0F7; /* Fondo pastel suave */
+            overflow: hidden;
+            font-family: 'Press Start 2P', monospace;
+            height: 100vh;
+            margin: 0;
+            cursor: url('https://www.svgrepo.com/show/217406/arrow-click.svg'), auto; /* Cursor retro */
+            position: relative;
+        }
+
+        /* Estilo de las estrellas cayendo */
+        .star {
+            position: absolute;
+            background-color: #FFB6C1; /* Rosa pastel brillante */
+            width: 8px;
+            height: 8px;
+            opacity: 0.9;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #FFB6C1, 0 0 10px #FF66FF, 0 0 20px #FF66FF;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .star:nth-child(odd) {
+            animation-duration: 3s;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(even) {
+            animation-duration: 4s;
+            animation-delay: 1s;
+        }
+
+        /* Ventana retro */
+        .window-frame {
+            border: 4px solid #FF66FF; /* Rosa brillante */
+            background-color: #FFF0F5; /* Rosa muy claro */
+            width: 90%;
+            margin: 0 auto;
+            height: 90%;
+            position: relative;
+            padding-top: 30px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            border-radius: 15px;
+        }
+
+        /* Estilo de la barra de título */
+        .window-title-bar {
+            background-color: #FF66FF;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Botones de la barra de título */
+        .window-title-bar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .window-title-bar button {
+            background-color: #FFF0F5;
+            border: 2px solid #FF66FF;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Efecto glow blanco para el texto con letras rosas */
+        h1, h2, p {
+            text-align: center;
+            margin: 0;
+            color: #FF66FF; /* Letras rosas */
+            text-shadow:
+                0 0 5px #FFFFFF,
+                0 0 10px #FFFFFF,
+                0 0 15px #FFFFFF,
+                0 0 20px #FF66FF; /* Glow blanco con un toque de rosa */
+        }
+
+        h1 {
+            font-size: 3.5em;
+        }
+
+        h2 {
+            font-size: 2.8em;
+        }
+
+        p {
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+
+        .error-window {
+            border: 3px solid #FF66FF;
+            background-color: #FFF0F5;
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+            overflow: hidden;
+            position: relative;
+            border-radius: 15px;
+        }
+
+        .error-header {
+            background-color: #FF66FF;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.5em;
+            border: 1px solid #FF66FF;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .error-content {
+            margin-top: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: block;
+            width: 280px;
+            height: 55px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 55px;
+            background-color: #FF66FF;
+            border: 3px solid #FF66FF;
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #FF3399;
+            border-color: #FF66FF;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .button:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .error-close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 2em;
+            color: #FF6699;
+            cursor: not-allowed;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-close:hover {
+            color: #FF3366;
+        }
+    </style>
+</head>
+<body>
+    <!-- Estrellas cayendo con colores suaves -->
+    <div class="star" style="top: 5%; left: 15%;"></div>
+    <div class="star" style="top: 20%; left: 30%;"></div>
+    <div class="star" style="top: 40%; left: 50%;"></div>
+    <div class="star" style="top: 60%; left: 70%;"></div>
+    <div class="star" style="top: 80%; left: 80%;"></div>
+    <div class="star" style="top: 10%; left: 90%;"></div>
+
+    <div class="window-frame">
+        <div class="window-title-bar">
+            <span>Ventana Retro</span>
+            <div class="buttons">
+                <button id="minimize" title="Minimizar">_</button>
+                <button id="maximize" title="Maximizar">□</button>
+                <button id="close" title="Cerrar">X</button>
+            </div>
+        </div>
+
+        <div class="error-window">
+            <div class="error-close">X</div>
+            <div class="error-header">Error</div>
+            <div class="error-content">
+                <h1>¡Felicidades!</h1>
+                <h2>Has descubierto el primer acertijo.</h2>
+                <p>Aún no sé a qué te voy a llevar con esto, pero es probable que sea una gran sorpresa.</p>
+            </div>
+            <div class="error-content">
+                <a href="https://i.ibb.co/7JGWJmX0/48-sin-t-tulo-20250515180836.jpg" class="button">Siguiente Acertijo</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
