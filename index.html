@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felicidades! descubriste el primer acertijo</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            background: linear-gradient(to bottom, #a3c6e2, #d6e9f5);
+            overflow: hidden;
+            font-family: 'Press Start 2P', monospace;
+            height: 100vh;
+            margin: 0;
+            cursor: url('https://i.ibb.co/MnqYxNY/pixel-cursor.png'), auto;
+            position: relative;
+        }
+
+        /* Estilo de la ventana y elementos Windows 95 */
+        .window-frame {
+            background-color: #ffe6f3;
+            width: 90%;
+            margin: 30px auto;
+            padding-top: 30px;
+            position: relative;
+            border: 4px solid #ff66cc;
+            box-shadow: inset -2px -2px #ff99cc, inset 2px 2px #ff99cc;
+        }
+
+        .window-title-bar {
+            background-color: #ff99cc;
+            color: white;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .window-title-bar .buttons button {
+            background-color: #ffe6f3;
+            border: 2px solid #ff66cc;
+            width: 20px;
+            height: 20px;
+            margin-left: 4px;
+            cursor: pointer;
+        }
+
+        .window-title-bar .buttons button:hover {
+            background-color: #ff66cc;
+            color: white;
+        }
+
+        .error-window {
+            margin: 20px;
+            border: 2px solid #ff66cc;
+            background-color: #fff0f5;
+            padding: 15px;
+        }
+
+        .error-header {
+            background-color: #ff99cc;
+            color: white;
+            padding: 5px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .error-content {
+            margin-top: 10px;
+            color: #cc338b;
+        }
+
+        h1, h2, p {
+            text-align: center;
+        }
+
+        /* Botón de siguiente acertijo rosa */
+        .button {
+            display: block;
+            width: 250px;
+            height: 40px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 40px;
+            background-color: #ff99cc;
+            border: 2px solid #ff66cc;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #ff66cc;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #ff99cc;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff66cc;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
+        }
+
+        /* Estilo del botón de volumen */
+        .volume-button {
+            background-color: #c0c0c0;
+            border: 2px solid #888;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .volume-button:hover {
+            background-color: #a0a0a0;
+        }
+
+        .volume-icon {
+            font-family: "Press Start 2P", monospace;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="star" style="top: 5%; left: 15%;"></div>
+    <div class="star" style="top: 20%; left: 30%;"></div>
+    <div class="star" style="top: 40%; left: 50%;"></div>
+    <div class="star" style="top: 60%; left: 70%;"></div>
+    <div class="star" style="top: 80%; left: 80%;"></div>
+    <div class="star" style="top: 10%; left: 90%;"></div>
+
+    <div class="window-frame">
+        <div class="window-title-bar">
+            <span>Usuario: Alan</span>
+            <div class="buttons">
+                <button title="Minimizar">_</button>
+                <button title="Maximizar">□</button>
+                <button title="Cerrar">X</button>
+            </div>
+        </div>
+
+        <div class="error-window">
+            <div class="error-header">Error</div>
+            <div class="error-content">
+                <h1>¡Felicidades!</h1>
+                <h2>Has descubierto el primer acertijo.</h2>
+                <p>Muy bieen >o<! te amo! :3</p>
+                <a href="https://i.ibb.co/7JGWJmX0/48-sin-t-tulo-20250515180836.jpg" class="button">Siguiente Acertijo</a>
+            </div>
+        </div>
+
+        <!-- Botón para controlar música con íconos de volumen -->
+        <button id="toggle-music" class="volume-button">
+            <span id="volume-on" class="volume-icon">🔊</span>
+            <span id="volume-off" class="volume-icon" style="display: none;">🔇</span>
+        </button>
+    </div>
+
+    <!-- Sonido de clic retro -->
+    <audio id="click-sound" src="https://www.myinstants.com/media/sounds/menu-select.mp3"></audio>
+    
+    <!-- Música de Tetris -->
+    <audio id="tetris-music" src="https://www.myinstants.com/media/sounds/tetris-theme.mp3" loop></audio>
+
+    <script>
+        // Reproducir sonido al hacer clic
+        const sound = document.getElementById('click-sound');
+        const buttons = document.querySelectorAll('button, .button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sound.currentTime = 0;
+                sound.play();
+            });
+        });
+
+        // Controlar la música con el botón de volumen
+        const music = document.getElementById('tetris-music');
+        const toggleButton = document.getElementById('toggle-music');
+        const volumeOnIcon = document.getElementById('volume-on');
+        const volumeOffIcon = document.getElementById('volume-off');
+
+        toggleButton.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                volumeOnIcon.style.display = 'block';  // Mostrar volumen activado
+                volumeOffIcon.style.display = 'none'; // Ocultar volumen silenciado
+            } else {
+                music.pause();
+                volumeOnIcon.style.display = 'none';  // Ocultar volumen activado
+                volumeOffIcon.style.display = 'block'; // Mostrar volumen silenciado
+            }
+        });
+
+        // Iniciar la música automáticamente al cargar la página
+        window.onload = () => {
+            music.play();
+            volumeOnIcon.style.display = 'block';  // Volumen activado
+            volumeOffIcon.style.display = 'none'; // Volumen silenciado
+        }
+    </script>
+</body>
+</html>
